@@ -10,4 +10,17 @@ SERVER = (request->service->reply->SERVER).
 ||CLIENT_SERVER = ({a,b}:CLIENT || SERVER) / {{a,b}.call/request, {a,b}.reply/wait, {a,b}.wait/service, {a,b}.continue/reply}.
 
 
-// Question 4
+// Question 3.4
+
+CLIENT2 = 			(call->CLIENT2_RUN),
+CLIENT2_RUN =		(wait->continue->CLIENT2
+					|timeout->CLIENT2).
+
+SERVER2 = 			(request->SERVER2_RUN),
+SERVER2_RUN = 		(service->reply->SERVER2
+					|cancel->SERVER2).
+
+||CLIENT_SERVER2 =	({a,b}:CLIENT2 || SERVER2) / {{a,b}.call/request, {a,b}.reply/wait, {a,b}.wait/service, {a,b}.continue/reply, {a,b}.timeout/cancel}.
+
+
+///////////////////////Realised q3.3 does the opposite of what the question asks, it only allows one client at a time
