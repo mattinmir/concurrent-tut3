@@ -1,2 +1,13 @@
+// Question 3.2
+
 ELEMENT = (up -> down -> ELEMENT).
 ||FOUR = ([0..3]:ELEMENT) / {up/[0].up, [1].up/[0].down, [2].up/[1].down, [3].up/[2].down, down/[3].down} @{up, down}.
+
+
+// Question 3.3
+CLIENT = (call->wait->continue->CLIENT).
+SERVER = (request->service->reply->SERVER).
+||CLIENT_SERVER = ({a,b}:CLIENT || SERVER) / {{a,b}.call/request, {a,b}.reply/wait, {a,b}.wait/service, {a,b}.continue/reply}.
+
+
+// Question 4
